@@ -14,7 +14,7 @@ load_dotenv()
 
 
 
-def styles(doc,font_name,font_size):
+def set_styles(doc,font_name,font_size):
     style = doc.styles['Normal']
     style.font.name = font_name
     style.font.size = Pt(font_size)
@@ -33,6 +33,7 @@ def clear_dir(dir):
 
 
 
+folder_path = ("./photos/")
 
 url = 'https://ru.wikipedia.org/wiki/Вики'
 
@@ -49,14 +50,11 @@ content = soup.find('div', class_='mw-content-ltr mw-parser-output')
 
 tags = content.find_all(['p','h2','img'])
 
-
- 
-
-
+picture_folder_path = "./photos"
 
 doc = Document()
 
-styles(doc,'Times New Roman',14)
+set_styles(doc,'Times New Roman',14)
 
 head = doc.add_heading(header.text)
 head.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -70,8 +68,8 @@ for index,tag in enumerate(tags):
 
 needed_tags = tags[index:]
 
-
 needed_tags.reverse()
+
 
 for index,tag in enumerate(needed_tags):
 
@@ -83,13 +81,12 @@ for index,tag in enumerate(needed_tags):
     
     if "<img" in str(tag):
         link_photo = f"https:{tag['src']}"
-        picture_folder_path = "./photos"
         picture_name = f"image{index}"
         path = Path(picture_folder_path, f"{picture_name}.png")
 
         download_picture(link_photo,path,headers)
         
-        images_doc = doc.add_picture(f"{picture_folder_path}/{picture_name}.png")
+        doc.add_picture(f"{picture_folder_path}/{picture_name}.png")
         picture_paragraph = doc.paragraphs[-1]
         picture_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
@@ -100,7 +97,7 @@ for index,tag in enumerate(needed_tags):
 
 doc.save('./documents/document.docx')
 
-clear_dir("./photos/")
+clear_dir(folder_path)
 
 
 
