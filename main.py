@@ -1,43 +1,28 @@
+import os
+from pathlib import Path
+from time import sleep
+import re
+import textwrap
+
 import requests
 from bs4 import BeautifulSoup
-from pathlib import Path
-import os
 from dotenv import load_dotenv
-from time import sleep
-import textwrap
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-import re
+
+from utils import set_styles, download_picture, clear_dir,clearing_tags, create_document_folder, create_pictures_folder
+from config import user_agent,picture_folder_path,document_path,document_folder_path
+
+
 load_dotenv()
 
+url = f''
 
+create_pictures_folder(picture_folder_path)
+create_document_folder(document_folder_path)
 
-
-def set_styles(doc,font_name,font_size):
-    style = doc.styles['Normal']
-    style.font.name = font_name
-    style.font.size = Pt(font_size)
-
-
-def download_picture(link_photo,path,headers):
-    response = requests.get(link_photo,verify=False, headers=headers)
-    response.raise_for_status()
-
-    with open(path, "wb") as file:
-        file.write(response.content)
-
-def clear_dir(dir):
-  for f in os.listdir(dir):
-      os.remove(os.path.join(dir, f))
-
-
-
-folder_path = ("./photos/")
-
-url = 'https://ru.wikipedia.org/wiki/Вики'
-
-headers = {'User-Agent' : 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; UP Vision Build/KOT49H)'}
+headers = user_agent
 
 response = requests.get(url,verify=False, headers=headers)
 response.raise_for_status()  
@@ -50,7 +35,6 @@ content = soup.find('div', class_='mw-content-ltr mw-parser-output')
 
 tags = content.find_all(['p','h2','img'])
 
-picture_folder_path = "./photos"
 
 doc = Document()
 
@@ -59,17 +43,8 @@ set_styles(doc,'Times New Roman',14)
 head = doc.add_heading(header.text)
 head.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-tags.reverse()
 
-for index,tag in enumerate(tags):
-    if "</p>" in str(tag):
-        number = index
-        break
-
-needed_tags = tags[index:]
-
-needed_tags.reverse()
-
+needed_tags = clearing_tags(tags)
 
 for index,tag in enumerate(needed_tags):
 
@@ -95,25 +70,9 @@ for index,tag in enumerate(needed_tags):
         head2.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
 
-doc.save('./documents/document.docx')
+doc.save(document_path)
 
-clear_dir(folder_path)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+clear_dir(picture_folder_path)
 
 "*th*r*"
+
