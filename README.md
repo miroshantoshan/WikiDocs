@@ -5,7 +5,7 @@
 
 # Screenshots
 
-![Screenshot](.screens/example.png)
+![Screenshot](screens/example.png)
 
 ## Functions
 
