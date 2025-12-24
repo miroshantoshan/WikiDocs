@@ -23,6 +23,10 @@
 
 - ❗ For start, start the autowiki.exe and forward the instructions, after all, the script close and you can check result in documents/document.py
 
+- To start the app, click on the **WikiDocs.exe**
+
+![Screenshot](screens/explorer.png)
+
 - ⚙️ If you have any problems, report bug and restart script
 
 - 👀 Check the correctness of the entered data
