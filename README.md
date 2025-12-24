@@ -1,6 +1,6 @@
 # AutoWiki
 
-## 🌟 О проекте
+## 🌟 About project
 **AutoWiki** — This is a console application for automatically generating structured reports in .docx format from Wikipedia articles. The program simplifies the process of collecting and formatting information for academic and work tasks.
 
 # Screenshots
