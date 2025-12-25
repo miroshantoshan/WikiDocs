@@ -1,13 +1,13 @@
 # AutoWiki
 
-![Screenshot](screens/logo.png)
+![Screenshot0](screens/logo.png)
 
 ## 🌟 About project
 **AutoWiki** — This is a console application for automatically generating structured reports in .docx format from Wikipedia articles. The program simplifies the process of collecting and formatting information for academic and work tasks.
 
 # Screenshots
 
-![Screenshot](screens/example.png)
+![Screenshot1](screens/example.png)
 
 ## Functions
 
@@ -27,7 +27,7 @@
 
 - To start the app, click on the **WikiDocs.exe**
 
-![Screenshot](screens/explorer.png)
+![Screenshot2](screens/explorer.png)
 
 - ⚙️ If you have any problems, report bug and restart script
 
