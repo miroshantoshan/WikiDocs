@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="screens/main_logo.png" width="400" alt="WikiDocs Logo">
+  <img src="screens/main_label.png" width="400" alt="WikiDocs Logo">
 </div>
 
 ## 🌟 About project
