@@ -1,9 +1,12 @@
-# AutoWiki
-
-![Screenshot0](screens/main_logo.png)
+<div align="center">
+  <h1>WikiDocs</h1>
+</div>
+<center>
+  <img src="mhttps://github.com/miroshantoshan/WikiDocs/blob/main/screens/main_logo.png">
+</center>
 
 ## 🌟 About project
-**AutoWiki** — This is a console application for automatically generating structured reports in .docx format from Wikipedia articles. The program simplifies the process of collecting and formatting information for academic and work tasks.
+**WikiDocs** — This is a console application for automatically generating structured reports in .docx format from Wikipedia articles. The program simplifies the process of collecting and formatting information for academic and work tasks.
 
 # Screenshots
 
