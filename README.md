@@ -21,7 +21,7 @@
 
 ## Short guide
 
-- ❗ For start, start the autowiki.exe and forward the instructions, after all, the script close and you can check result in documents/document.py
+- ❗ For start, start the wikidocs.exe and forward the instructions, after all, the script close and you can check result in documents/document.py
 
 - To start the app, click on the **WikiDocs.exe**
 
