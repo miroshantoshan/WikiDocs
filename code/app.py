@@ -185,7 +185,7 @@ for index,tag in enumerate(needed_tags):
             picture_paragraph = doc.paragraphs[-1]
             picture_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
         except Exception as e:
-            print(f"Произошла непредвиденная ошибка")
+            print(f"{YELLOW}Не удалось вставить картинку {index}: {e}{RESET}")
 
     if "<h2" in str(tag):
         head2 = doc.add_heading(tag.text, level=2)
