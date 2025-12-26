@@ -169,14 +169,23 @@ for index,tag in enumerate(needed_tags):
     
     if "<img" in str(tag):
         link_photo = f"https:{tag['src']}"
-        picture_name = f"image{index}"
-        path = Path(picture_folder_path, f"{picture_name}.png")
-
-        download_picture(link_photo,path,headers)
         
-        doc.add_picture(f"{picture_folder_path}/{picture_name}.png")
-        picture_paragraph = doc.paragraphs[-1]
-        picture_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        if link_photo.lower().endswith('.svg'):
+            continue 
+
+        ext = link_photo.split('.')[-1].split('?')[0] 
+        picture_name = f"image{index}.{ext}"
+        
+        path = Path(picture_folder_path) / picture_name
+
+        try:
+            download_picture(link_photo, path, headers)
+            
+            doc.add_picture(str(path)) 
+            picture_paragraph = doc.paragraphs[-1]
+            picture_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        except Exception as e:
+            print(f"Произошла непредвиденная ошибка")
 
     if "<h2" in str(tag):
         head2 = doc.add_heading(tag.text, level=2)
